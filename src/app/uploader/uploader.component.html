@@ -1,0 +1,22 @@
+<p class="label">Или перетащите:</p>
+<div
+  class="dropzone"
+  appDnd
+  (hovered)="toggleHover($event)"
+  (dropped)="onDrop($event)"
+  (clicked)="onClick($event)"
+  [class.hovering]="isHovering"
+>
+  <p>Перетащите и отпустите файл</p>
+  <p>или</p>
+  <p>Нажмите для выбора файла</p>
+</div>
+
+<h3 *ngIf="!!files.length">Загруженные файлы:</h3>
+
+<div class="files-list" *ngFor="let file of files; let i = index">
+  <div class="files-list__item">
+    <span>{{ file.name }}</span>
+    <span (click)="removeFile(file)"> Удалить </span>
+  </div>
+</div>
